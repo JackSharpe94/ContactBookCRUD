@@ -11,12 +11,17 @@ class DatabaseConnection:
         self.cursor.execute(query)
         self.connection.commit()
 
-    def insert(self, contact):
+    def insert(self, query, table_name):
 
+            print(query)
             self.cursor.execute(f'''
-            INSERT INTO contacts (ContactID,FirstName,LastName,Telephone)
-            VALUES (NULL, '{contact.first_name}', '{contact.last_name}', '{contact.telephone_number}'); 
+            INSERT INTO {table_name}
+            VALUES {query} 
             ''')
             self.connection.commit()
 
-
+    def delete_record(self, query, table_name):
+        self.cursor.execute(f'''
+        DELETE FROM {table_name}
+        WHERE {query}
+        ''')
