@@ -21,7 +21,8 @@ def main():
         if last_name == "quit": break
         telephone = input("Please Enter Telephone Number: ")
         if telephone == "quit": break
-        db.insert(Contact.Contact(first_name, last_name, telephone))
+        new_contact = Contact.Contact(first_name, last_name, telephone)
+        db.insert(new_contact.add_contact(), 'contacts')
         print("Successfully Inserted")
         continue
 
